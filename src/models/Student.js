@@ -17,6 +17,7 @@ exports.getIdByEmail = async getStudent => {
   return id;
 };
 
+//why not just return email
 exports.getEmailById = async getStudent => {
   const email = await getEmailById(TABLE_STUDENTS, getStudent);
   return email === null ? null : email;

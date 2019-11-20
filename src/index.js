@@ -11,7 +11,7 @@ const app = express();
 if (process.env.NODE_ENV === "development") {
   setupTestDB();
 }
-
+//use gzip compression
 app.use(express.json());
 
 index(app);

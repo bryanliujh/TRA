@@ -1,0 +1,5 @@
+https://dzone.com/articles/design-patterns-in-expressjs
+
+https://blog.logrocket.com/the-perfect-architecture-flow-for-your-next-node-js-project/
+
+https://medium.com/the-node-js-collection/clean-node-1df635d176f7

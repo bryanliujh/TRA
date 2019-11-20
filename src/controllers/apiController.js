@@ -1,3 +1,15 @@
+/**
+ *
+ * unused variables req, next
+ *
+ * remove console.log(`Student ${studentToSuspend} suspended.`);
+ *
+ * There should not be business logic in controller
+ *
+ *
+ * idStudent < 0 logic can be rewritten
+ */
+
 const { asyncForEach } = require("../utils/asyncForEach");
 const { Teacher, Student, TeacherStudent } = require("../models");
 
