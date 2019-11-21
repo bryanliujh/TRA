@@ -1,6 +1,10 @@
 const pool = require("./pool");
 const apiController = require("./controllers/apiController");
 
+//recommendation is to use sql orm sequelize instead of writing raw sql
+//no need write vendor specific sql, mssql, mysql
+
+
 const {
   TABLE_STUDENTS,
   TABLE_TEACHERS,

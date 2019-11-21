@@ -1,3 +1,5 @@
+//can be put under config folder
+
 const mysql = require("promise-mysql");
 
 const { NODE_ENV, PRODUCTION_DB, DEVELOPMENT_DB } = process.env;

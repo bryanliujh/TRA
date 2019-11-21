@@ -32,6 +32,7 @@ describe("Student model test", () => {
     expect(email).toBe(null);
   });
   test("suspend a student", async () => {
+    //instead of const student1 rename it to email
     const student1 = await Student.getEmailById(1);
     await Student.suspend(student1);
     const resStudent1 = await Student.getStudentByEmail(student1);

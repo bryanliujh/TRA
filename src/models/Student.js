@@ -23,6 +23,7 @@ exports.getEmailById = async getStudent => {
   return email === null ? null : email;
 };
 
+//update database sql in database js but not select function
 exports.suspend = async studentEmail => {
   await database.update(
     TABLE_STUDENTS,
@@ -37,3 +38,21 @@ exports.suspend = async studentEmail => {
     return await database.query(queryStr);
   };
 };
+
+
+/***
+ * USE ORM instead of raw sql
+ * module.exports = (sequelize, DataTypes) => {
+    return sequelize.define('Student', {
+        id: {
+          type: DataTypes.UUID,
+          defaultValue: DataTypes.UUIDV4,
+          primaryKey: true,
+          allowNull: false
+        },
+        ....
+    })
+}
+ * 
+ * 
+ */

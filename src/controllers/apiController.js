@@ -1,10 +1,10 @@
 /**
+ * Handler is separate from router and put in controller, good.
  *
- * unused variables req, next
  *
  * remove console.log(`Student ${studentToSuspend} suspended.`);
  *
- * There should not be business logic in controller
+ * There should not be business logic in controller, mentionedStudents, notificationlist should be in a service
  *
  *
  * idStudent < 0 logic can be rewritten
@@ -12,6 +12,7 @@
 
 const { asyncForEach } = require("../utils/asyncForEach");
 const { Teacher, Student, TeacherStudent } = require("../models");
+
 
 const teachers = async (req, res, next) => {
   const allTeachers = await Teacher.getAll();
@@ -22,7 +23,8 @@ const students = async (req, res, next) => {
   const allStudents = await Student.getAll();
   res.status(200).json(allStudents);
 };
-
+//async imply promise will be return
+//await makes js wait until promise return a result
 const register = async (req, res, next) => {
   try {
     const { body } = req;
@@ -30,6 +32,7 @@ const register = async (req, res, next) => {
     let idStudent;
     const idTeacher = await Teacher.getIdByEmail(teacher); // from db
 
+    //if idTeacher === null, should be better
     if (idTeacher < 0) {
       const error = new Error(`Teacher ${teacher} does not exist.`);
       error.name = "UserError";
@@ -60,11 +63,14 @@ const commonStudents = async (req, res, next) => {
   res.json({ students: commonStudentsEmail });
 };
 
+//remove console log
+//should be put instead of post?
 const suspend = async (req, res, next) => {
   const studentToSuspend = req.body.student;
   // ERROR-HANDLING: check if student exists
   const indexStudent = await Student.getIdByEmail(studentToSuspend);
   if (indexStudent < 0)
+  //should use error handling middleware?
     return res
       .status(400)
       .json({ message: `Student ${studentToSuspend} does not exist` });
@@ -74,12 +80,14 @@ const suspend = async (req, res, next) => {
   res.status(204).json({ message: "suspend" });
 };
 
+//should be get instead of post?
 const retrieveForNotifications = async (req, res, next) => {
   const { teacher, notification } = req.body;
   const indexTeacher = await Teacher.getIdByEmail(teacher);
   if (indexTeacher < 0) {
     const error = new Error(`Teacher ${teacher} does not exist.`);
     error.name = "UserError";
+    //trigger error handling middleware
     return next(error);
   }
   // Get students registered under a teacher by id

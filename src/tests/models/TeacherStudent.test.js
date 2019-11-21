@@ -24,6 +24,8 @@ describe("TeacherStudent model test", () => {
     );
     expect(
       commonStudents.find(student =>
+        //student.email.includes(STUDENTS[0].email >= 2)
+        //shouldn't be >= 0 as 0 common students will return and students[1] is not common student for teacher[0] and [1]
         student.email.includes(STUDENTS[1].email >= 0)
       )
     ).toBeTruthy;

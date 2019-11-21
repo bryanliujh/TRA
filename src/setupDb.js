@@ -5,6 +5,8 @@
 // TeacherStudent link table
 //The setup includes creation of table and inserting of data
 
+//unused imports
+
 require("dotenv").config();
 const database = require("./database");
 const { asyncForEach } = require("./utils/asyncForEach");
@@ -33,13 +35,13 @@ const setupTestDB = async () => {
   TEACHERS[1].id = teachResponse.insertId;
   teachResponse = await Teacher.insert(TEACHERS[2].email);
   TEACHERS[2].id = teachResponse.insertId;
-  
+
   let studResponse = await Student.insert(STUDENTS[0].email);
   STUDENTS[0].id = studResponse.insertId;
   studResponse = await Student.insert(STUDENTS[1].email);
-  STUDENTS[1].id = studResponse.insertId; 
+  STUDENTS[1].id = studResponse.insertId;
   studResponse = await Student.insert(STUDENTS[2].email);
-  STUDENTS[2].id = studResponse.insertId; 
+  STUDENTS[2].id = studResponse.insertId;
 
   await TeacherStudent.insert(TEACHERS[0].id, STUDENTS[0].id);
   await TeacherStudent.insert(TEACHERS[0].id, STUDENTS[1].id);

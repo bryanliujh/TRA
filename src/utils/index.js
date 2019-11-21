@@ -1,5 +1,6 @@
 const database = require("../database");
 
+//return null or -1
 exports.getIdByEmail = async (table, findPerson) => {
   const queryStr = `SELECT id FROM ${table} WHERE email='${findPerson}'`;
   const response = await database.query(queryStr);

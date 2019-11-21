@@ -1,8 +1,5 @@
 /**
- *
- * @param {*} req not being used
- * @param {*} res
- * @param {*} next not being used
+ *Route handler separated from router
  */
 
 const showHomepage = (req, res, next) => {
